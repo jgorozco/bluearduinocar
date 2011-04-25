@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+
+<Button android:layout_height="wrap_content" android:layout_alignParentRight="true" android:id="@+id/Button02" android:layout_width="wrap_content" android:text="server" android:minWidth="150px" android:onClick="LaunchServer"></Button>
+
+
+<Button android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:id="@+id/Button01" android:layout_width="wrap_content" android:onClick="LaunchClient" android:text="Client" android:minWidth="150px"></Button>
+
+<TextView android:layout_height="wrap_content" android:layout_below="@+id/Button01" android:layout_width="wrap_content" android:layout_alignLeft="@+id/Button01" android:layout_alignRight="@+id/Button01" android:id="@+id/Ttxt_port" android:text="PORT :" android:textSize="20px" android:layout_marginTop="2px" android:padding="8px"></TextView>
+<TextView android:layout_height="wrap_content" android:layout_below="@+id/Ttxt_port" android:layout_width="wrap_content" android:layout_alignLeft="@+id/Ttxt_port" android:textSize="20px" android:text="BT DEVICE : " android:id="@+id/txt_device" android:layout_marginTop="2px" android:padding="8px"></TextView><EditText android:layout_height="wrap_content" android:layout_toRightOf="@+id/txt_device" android:layout_alignTop="@+id/txt_device" android:layout_alignBottom="@+id/txt_device" android:onClick="SelectBtDevice" android:text="None" android:id="@+id/Edit_bt_addr" android:layout_width="match_parent"></EditText><EditText android:layout_height="wrap_content" android:layout_toRightOf="@+id/Ttxt_port" android:layout_alignTop="@+id/Ttxt_port" android:layout_alignBottom="@+id/Ttxt_port" android:id="@+id/edt_port" android:layout_width="match_parent" android:text="12345" android:onClick="SelectBtDevice"></EditText>
+
+
+
+</RelativeLayout>
