@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<TextView android:layout_width="wrap_content" android:id="@+id/textView1"
+		android:layout_alignParentLeft="true" android:layout_height="wrap_content"
+		android:text="Server IP : " android:textSize="18px" android:padding="8px"></TextView>
+	<Button android:id="@+id/button1" android:layout_below="@+id/textView1"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_alignLeft="@+id/textView1" android:text="Test Server"
+		android:onClick="testServer"></Button>
+	<RelativeLayout android:id="@+id/relativeLayout1"
+		android:layout_below="@+id/button1" android:layout_alignLeft="@+id/button1"
+		android:layout_height="match_parent" android:layout_width="match_parent">
+		<Button android:id="@+id/button2" android:layout_width="wrap_content"
+			android:layout_alignParentLeft="true" android:layout_height="wrap_content"
+			android:padding="40px" android:layout_marginTop="10px"
+			android:onClick="ClickUp" android:text="UP"></Button>
+		<Button android:id="@+id/button3" android:layout_below="@+id/button2"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_alignLeft="@+id/button2" android:padding="40px"
+			android:layout_marginTop="10px" android:onClick="ClickDown"
+			android:text="Bottom"></Button>
+		<Button android:id="@+id/button4" android:layout_width="wrap_content"
+			android:layout_alignParentRight="true" android:layout_height="wrap_content"
+			android:padding="40px" android:layout_marginTop="10px"
+			android:onClick="ClickLong" android:text="Largue"></Button>
+		<Button android:id="@+id/button5" android:layout_below="@+id/button4"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_alignLeft="@+id/button4" android:padding="40px"
+			android:layout_marginTop="10px" android:onClick="ClickShort"
+			android:text="Short"></Button>
+	</RelativeLayout>
+	<TextView android:text="TextView" android:layout_height="wrap_content"
+		android:layout_toRightOf="@+id/button1" android:layout_alignTop="@+id/button1"
+		android:layout_alignBottom="@+id/button1" android:gravity="center"
+		android:layout_width="match_parent" android:id="@+id/cli_edit_serverstatus"></TextView>
+	<EditText android:layout_height="wrap_content"
+		android:layout_toRightOf="@+id/textView1" android:layout_alignTop="@+id/textView1"
+		android:layout_alignBottom="@+id/textView1" android:layout_width="match_parent"
+		android:id="@+id/cli_edit_ip" android:layout_marginRight="80px" android:text="10.95.196.1"></EditText>
+	<TextView android:layout_width="wrap_content" android:layout_alignParentRight="true" android:layout_height="wrap_content" android:text=":9999" android:id="@+id/cli_txt_port" android:padding="5px" android:textSize="18px"></TextView>
 </RelativeLayout>

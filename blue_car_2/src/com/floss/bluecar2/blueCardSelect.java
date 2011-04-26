@@ -72,22 +72,21 @@ public class blueCardSelect extends Activity {
 
 	public void LaunchClient(View target)
 	{
-		Context context = getApplicationContext();
-		CharSequence text = "Hello LaunchClient!";
-		int duration = Toast.LENGTH_SHORT;
-
-		Toast toast = Toast.makeText(context, text, duration);
-		toast.show();
+		Intent myIntent = new Intent(getApplicationContext(),CarClient.class);
+		startActivity(myIntent);
 	}
 
 	public void LaunchServer(View target)
 	{
-		Context context = getApplicationContext();
-		CharSequence text = "Hello LaunchServer!";
-		int duration = Toast.LENGTH_SHORT;
-
-		Toast toast = Toast.makeText(context, text, duration);
-		toast.show();
+		if ((editBtDevice.length()>0)&&(editBtDevice.getText().toString().length()>6))
+		{
+			Intent myIntent = new Intent(getApplicationContext(),CarServer.class);
+			startActivity(myIntent);
+		}else
+		{
+			Toast.makeText(getApplicationContext(), "Not proper port or bt device", Toast.LENGTH_LONG);
+		}
+		
 	}    
 
 	public void SelectBtDevice(View target)

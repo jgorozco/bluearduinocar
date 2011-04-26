@@ -92,7 +92,7 @@ public class ServerSocketThread extends Thread {
 	
 	
 	private void createServerTCP() {
-		myHandler.sendMessage(MessageUtils.OnProgress("Servidor creado", 5, -1));
+		myHandler.sendMessage(MessageUtils.OnProgress("Servidor creado", 15, -1));
 		try {
 			if (serversock!=null)
 			{
@@ -100,22 +100,26 @@ public class ServerSocketThread extends Thread {
 				serversock=null;
 			}
 			serversock=ServerSocketFactory.getDefault().createServerSocket(myPort);
-			myHandler.sendMessage(MessageUtils.OnProgress("servidor escuchando en ["+NetworkUtils.getLocalIpAddress()+":"+String.valueOf(myPort)+"]", 10, -1));
+			myHandler.sendMessage(MessageUtils.OnProgress("servidor escuchando en ["+NetworkUtils.getLocalIpAddress()+":"+String.valueOf(myPort)+"]", 30, -1));
 			boolean end=false;
 			while (!end)
 			{
 				long initCalendar=Calendar.getInstance().getTimeInMillis();
+				myHandler.sendMessage(MessageUtils.OnProgress("esperando conexion.. []", 40, -1));
 				Socket s= serversock.accept();
-				myHandler.sendMessage(MessageUtils.OnProgress("Conexion aceptada en ["+String.valueOf(s.getInetAddress().toString())+"]", 20, -1));
+				myHandler.sendMessage(MessageUtils.OnProgress("Conexion aceptada en ["+String.valueOf(s.getInetAddress().toString())+"]", 50, -1));
 				BufferedReader br=new BufferedReader(new InputStreamReader(s.getInputStream()));
 				String request=br.readLine();
-				myHandler.sendMessage(MessageUtils.OnProgress("Mensaje recibido ["+request+"]", 30, -1));
+				myHandler.sendMessage(MessageUtils.OnProgress("Mensaje recibido ["+request+"]", 70, -1));
 				OutputStream out=s.getOutputStream();
 				PrintWriter output = new PrintWriter(s.getOutputStream(),true);
 				String st=requestGenerator(request);
-				myHandler.sendMessage(MessageUtils.OnProgress("generada respuesta ["+st+"]", 40, -1));
+				if (st.equals(""))
+				{
+					myHandler.sendMessage(MessageUtils.OnData(st, -1));
+				}
 				output.println(st);
-				myHandler.sendMessage(MessageUtils.OnProgress("Mensaje mensaje enviado ["+st+"]", 50, -1));
+				myHandler.sendMessage(MessageUtils.OnProgress("Mensaje mensaje enviado ["+st+"]", 90, -1));
 				output.flush();
 				output.close();
 				out.flush();
@@ -137,11 +141,15 @@ public class ServerSocketThread extends Thread {
 	}
 	
 	public String requestGenerator(String readLine) {
-		if ("quit".equals(readLine))
+		if ("QUIT".equals(readLine))
 		{
-			return "";
+			return "exit";
 		}
-		return "getting["+readLine+"]";
+		if ("SYNC".equals(readLine))
+		{
+			return "ACK";
+		}
+		return "";
 	}
 
 
