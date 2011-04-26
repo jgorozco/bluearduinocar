@@ -10,9 +10,10 @@ public class MessageUtils {
 	public static final String TYPE="type";
 	public static final String EVENT="event";
 	public static final int MSG_COMPLETE=0;
-	public static final int MSG_PROGRESS=1;	
+	public static final int MSG_PROGRESS=1;		
 	public static final int MSG_ERROR=2;
-
+	public static final int MSG_DATA=3;	
+	
 	public static final int EVT_POST=0;
 	public static final int EVT_DOWLOAD=1;	
 	public static final int EVT_UPLOAD=2;	
@@ -39,6 +40,18 @@ public class MessageUtils {
 		mess.setData(b);
 		return mess;
 	}
+	
+	public static Message OnData(String p_string,int p_type)
+	{
+		Message mess=new Message();
+		Bundle b = new Bundle();
+		b.putInt(EVENT, p_type);
+		b.putInt(TYPE, MSG_DATA);
+		b.putString(DATA,p_string);
+		mess.setData(b);
+		return mess;
+	}
+	
 	
 	public static Message OnProgress(String p_string,int p_progress,int p_type)
 	{

@@ -104,11 +104,16 @@ public class ClientSocketThread extends Thread {
 		    BufferedReader input = new BufferedReader(new InputStreamReader(s.getInputStream()));
 		    myHandler.sendMessage(MessageUtils.OnProgress("recibiendo  datos...",50,-1));
 	        String st = input.readLine();
+	        if(st.equals("ACK"))
+	        	{
+		        long endCalendar=Calendar.getInstance().getTimeInMillis();
+				long diff=endCalendar-initCalendar;
+	        	myHandler.sendMessage(MessageUtils.OnData(String.valueOf(diff), -1));
+	        	}
 	        myHandler.sendMessage(MessageUtils.OnProgress("recibido["+st+"] y cerrando conexion",80,-1));
 	        s.close();	    
-	        long endCalendar=Calendar.getInstance().getTimeInMillis();
-			long diff=endCalendar-initCalendar;
-			myHandler.sendMessage(MessageUtils.OnCompleteMsg(String.valueOf(diff), -1));
+
+		//	myHandler.sendMessage(MessageUtils.OnCompleteMsg(String.valueOf(diff), -1));
 		}  catch (Exception e) {
 			if (s!=null)
 			{

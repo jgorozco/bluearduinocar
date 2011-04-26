@@ -3,4 +3,17 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent">
+    <Button android:id="@+id/button1" android:layout_alignParentLeft="true" android:layout_height="wrap_content" android:text="Launch Server" android:layout_width="match_parent" android:onClick="LaunchServer"></Button>
+    <TextView android:layout_below="@+id/button1" android:layout_width="wrap_content" android:id="@+id/textView1" android:layout_height="wrap_content" android:layout_alignLeft="@+id/button1" android:text="IP ADDRESS :" android:textSize="20px"></TextView>
+    <TextView android:layout_below="@+id/textView1" android:layout_width="wrap_content" android:id="@+id/textView2" android:layout_height="wrap_content" android:layout_alignLeft="@+id/textView1" android:text="SERVER STATUS : " android:textSize="20px"></TextView>
+    <TextView android:text="TextView" android:layout_height="wrap_content" android:layout_toRightOf="@+id/textView2" android:layout_alignTop="@+id/textView2" android:layout_alignBottom="@+id/textView2" android:textSize="17px" android:layout_width="match_parent" android:gravity="center" android:id="@+id/srv_txt_serverstatus"></TextView>
+    <TextView android:layout_below="@+id/textView2" android:layout_width="wrap_content" android:id="@+id/textView3" android:layout_height="wrap_content" android:layout_alignLeft="@+id/textView2" android:text="BT STATUS : " android:textSize="20px"></TextView>
+    <Button android:id="@+id/button2" android:layout_below="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignLeft="@+id/textView3" android:onClick="TestBluetooth" android:text="Test bluetooth device"></Button>
+    <ScrollView android:id="@+id/scrollView1" android:layout_below="@+id/button2" android:layout_alignLeft="@+id/button2" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#555555">
+        <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:text="TextView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:padding="5px" android:id="@+id/srv_txt_details"></TextView>
+        </LinearLayout>
+    </ScrollView>
+    <TextView android:text="TextView" android:layout_height="wrap_content" android:layout_toRightOf="@+id/textView3" android:layout_alignTop="@+id/textView3" android:layout_alignBottom="@+id/textView3" android:textSize="17px" android:layout_width="match_parent" android:gravity="center" android:id="@+id/srv_txt_btstatus"></TextView>
+    <TextView android:text="TextView" android:layout_height="wrap_content" android:layout_toRightOf="@+id/textView1" android:layout_alignTop="@+id/textView1" android:layout_alignBottom="@+id/textView1" android:id="@+id/srv_txt_ipaddr" android:gravity="center" android:textSize="17px" android:layout_width="match_parent"></TextView>
 </RelativeLayout>
