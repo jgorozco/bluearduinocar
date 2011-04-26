@@ -114,9 +114,9 @@ public class ServerSocketThread extends Thread {
 				OutputStream out=s.getOutputStream();
 				PrintWriter output = new PrintWriter(s.getOutputStream(),true);
 				String st=requestGenerator(request);
-				if (st.equals(""))
+				if (st.equals("ok"))
 				{
-					myHandler.sendMessage(MessageUtils.OnData(st, -1));
+					myHandler.sendMessage(MessageUtils.OnData(request, -1));
 				}
 				output.println(st);
 				myHandler.sendMessage(MessageUtils.OnProgress("Mensaje mensaje enviado ["+st+"]", 90, -1));
@@ -149,7 +149,7 @@ public class ServerSocketThread extends Thread {
 		{
 			return "ACK";
 		}
-		return "";
+		return "ok";
 	}
 
 

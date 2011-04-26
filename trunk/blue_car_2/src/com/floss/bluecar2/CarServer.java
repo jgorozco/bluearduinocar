@@ -96,8 +96,8 @@ public class CarServer extends Activity {
 			}
 		};
 
-		myBtManager=new BtManager(getApplicationContext(), myBtHandler);
-		initBtDevice();
+	//s	myBtManager=new BtManager(getApplicationContext(), myBtHandler);
+	//	initBtDevice();
 
 	}
 
