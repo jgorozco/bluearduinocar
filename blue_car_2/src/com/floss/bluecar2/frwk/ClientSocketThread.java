@@ -96,15 +96,16 @@ public class ClientSocketThread extends Thread {
 			myHandler.sendMessage(MessageUtils.OnProgress("conexion establecida TCP["+s.getInetAddress().getHostAddress()+"]",10,-1));
 			OutputStream out = s.getOutputStream();
 		    PrintWriter output = new PrintWriter(out);
-		    String message="SINC envio desde cliente";
+		    String message=myMessage;
 		    myHandler.sendMessage(MessageUtils.OnProgress("enviando datos... ["+message+"]",20,-1));
 		    output.println(message);
 			output.flush();
 			out.flush();
 		    BufferedReader input = new BufferedReader(new InputStreamReader(s.getInputStream()));
-		    myHandler.sendMessage(MessageUtils.OnProgress("recibiendo  datos...",50,-1));
-	        String st = input.readLine();
-	        if(st.equals("ACK"))
+		    String st = input.readLine();
+		    myHandler.sendMessage(MessageUtils.OnProgress("recibiendo  datos..["+st+"].",50,-1));
+			  
+		    if(st.equals("ACK"))
 	        	{
 		        long endCalendar=Calendar.getInstance().getTimeInMillis();
 				long diff=endCalendar-initCalendar;

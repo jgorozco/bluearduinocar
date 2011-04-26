@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ public class CarClient extends Activity {
 		super.onCreate(savedInstanceState);
 		initXmlElements();
 		fillElements();
+		TViewClientStatus.setText("Not ckeck yet!");
 		myClientHandler = new Handler() {
 				public void handleMessage(Message msg) {
 					
@@ -35,6 +37,7 @@ public class CarClient extends Activity {
 						String data=msg.getData().getString(MessageUtils.DATA);
 						TViewClientStatus.setText("Server OK, ping["+data+"]");
 					}
+					Log.d("Looger", msg.getData().getString(MessageUtils.DATA));
 					//appndtxt(msg.getData().getString(MessageUtils.DATA));
 				}
 			};
@@ -90,7 +93,7 @@ public class CarClient extends Activity {
 	
 	public void testServer (View Target)
 	{
-		sendPetition("SINC");
+		sendPetition("SYNC");
 	}
 
 	public void ClickUp (View Target)
